@@ -1,0 +1,43 @@
+.Main{
+  display:flex;
+  justify-content: center;
+}
+
+.Title{
+  font-size: 1.5rem;
+  margin: auto 0;
+  width: calc(100% / 5);
+}
+
+.Subtitle{
+  color:white;
+}
+
+.Button {
+  background-color: #4CAF50;
+  border: solid;
+  color: #ec9393;
+  height: 3rem;
+  margin: 0rem 0.5rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.Button:disabled{
+  background-color: #869c87;
+  cursor: not-allowed;
+}
+
+/* @media (min-width: 780px) {
+  .Button {
+    width: calc(100% / 10);
+  }
+
+  .Title{
+    width: calc(100% / 10);
+  }
+}
+ */

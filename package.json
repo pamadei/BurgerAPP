@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@types/react": "^16.8.7",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
     "react-scripts": "2.1.8",
     "typescript": "^3.3.3333"
   },

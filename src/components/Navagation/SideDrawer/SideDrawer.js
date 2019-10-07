@@ -7,7 +7,6 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 const SideDrawer = props => {
 
   // Animation...
-
   let attachedClasses = [style.SideDrawer, style.Close];
   if(props.open){
     attachedClasses = [style.SideDrawer, style.Open]

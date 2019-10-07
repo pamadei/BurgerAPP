@@ -11,7 +11,7 @@ const Order = require('../../models/Order');
 
 router.get('/', (req, res) => {
   Order.find()
-    .sort({date: -1})
+    .sort({date: 1})
     .then(orders => res.status(200).json(orders))
     .catch(err =>console.log(err))
 });

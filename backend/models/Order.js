@@ -1,5 +1,4 @@
 const moongose = require('mongoose');
-const uuid = require('uuid/v4')
 const Schema = moongose.Schema;
 
 // Create Orders Schema //
@@ -19,7 +18,7 @@ const OrderSchema = new Schema({
   },
   orderNumber: {
     type: String,
-    default: uuid()
+    required: true,
   }
 });
 

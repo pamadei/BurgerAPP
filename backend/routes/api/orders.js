@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const uuid = require('uuid/v4')
 
 // Order Model
 const Order = require('../../models/Order');
@@ -23,6 +24,7 @@ router.post('/', (req, res) => {
   const newOrder = new Order({
     ingredients: req.body.ingredients,
     totalPrice: req.body.totalPrice,
+    orderNumber: uuid()
   });
   newOrder.save()
     .then(order => res.status(200).json(order))

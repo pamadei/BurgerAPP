@@ -3,7 +3,10 @@ import Burger from '../../components/Burger/Burger'
 import BuilderControls from '../../components/Burger/BuildControls/BuilderCotrols'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
-import axios from 'axios'
+import Spinner from '../../components/UI/Spinner/Spinner'
+import faker from 'faker';
+
+import axios from '../../axios-orders'
 
 const INGREDIENTS_COSTS = {
   salad: 0.1,
@@ -24,7 +27,8 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 4,
     purchasable: false,
-    purchasing: false
+    purchasing: false,
+    loading: false
   }
 
   updatePurchaseState(ingredients) {
@@ -75,14 +79,21 @@ class BurgerBuilder extends Component {
     this.setState({purchasing:false})
   }
 
-  purchaseHandlerContinue = (ingredients, totalPrice) => {
+  purchaseHandlerContinue = () => {
+    this.setState({loading:true})
     const newOrder = {
-      ingredients,
-      totalPrice
+      ingredients: this.state.ingredients,
+      totalPrice: this.state.totalPrice.toFixed(),
+      customer: {
+        name: faker.name.findName(),
+        email: faker.internet.email()
+      }
     }
+    axios.post('/api/orders', newOrder)
+    .then(res => this.setState({loading:false}));
 
-    axios.post('http://localhost:5000/api/orders', newOrder)
-    .then(res => console.log(res.data));
+    this.setState({purchasing:false})
+
   }
 
   render() {
@@ -110,12 +121,13 @@ class BurgerBuilder extends Component {
         showModal = {this.state.purchasing}
         cancelOrder = {this.purchaseHandlerCancel}
         >
-          <OrderSummary
+          {this.state.loading ? <Spinner/> : <OrderSummary
           ingredients={this.state.ingredients}
           totalPrice={this.state.totalPrice}
           cancelOrder={this.purchaseHandlerCancel}
           continueOrder={this.purchaseHandlerContinue}
-          />
+          />}
+          
         </Modal>
       </Fragment>
     )

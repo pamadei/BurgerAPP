@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Layout from '../components/Layout/Layout'
 import BurgerBuilder from './BurgerBuilder/BurgerBuilder'
+
 import Orders from '../containers/Orders/Orders'
 import OrderPage from '../components/OrderPage/OrderPage'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Checkout from '../components/Checkout/Checkout'
 
 

@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
+import axios from '../../axios-orders';
 import style from './Orders.module.css'
+import OrderIngredient from './OrderIngredient/OrderIngredient'
+import {Link} from 'react-router-dom'
 import Order from './Order/Order'
 
 
@@ -12,31 +14,37 @@ class Orders extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/api/orders')
+    axios.get('/api/orders')
       .then(res => this.setState({orders:res.data}))
   }
 
 
   render() {
-  let orders = <div>Loading Orders</div>
-    if(this.state.orders.length > 1){
+  this.orders = <div>Loading Orders</div>
+    if(this.state.orders.length > 0){
     let ingredientsSummary = this.state.orders
       .map((order,i) => Object.keys(order.ingredients)
       .map(igKey => [...Array(order.ingredients[igKey[i]]).keys()]
       .map((_, i) => 
-        <Order 
+        <OrderIngredient 
         key={Math.floor(Math.random()*1000)+i}
         ingredient={igKey}
         ingQuantity={order.ingredients[igKey]}
         />)));
 
-    orders = (
+    this.orders = (
       <ul className={style.Orders}>
-        {this.state.orders.map((order,i) =>
-        <li className={style.Order} key={order._id}>
-        {ingredientsSummary[i]}
-        <span>---</span> 
-        <p>Total Price: {order.totalPrice}</p></li>
+        {this.state.orders.map((order,i) => 
+          <Link 
+          to={this.props.match.url + '/' +  order._id}
+          className={style.Link}
+          key={order._id}
+          >
+          <Order 
+          order={order}
+          ingredientsSummary = {ingredientsSummary[i]}
+          />
+          </Link>
         )}
       </ul>
     )
@@ -44,7 +52,7 @@ class Orders extends Component {
       return (
       <Fragment>
         <p style={{textAlign:"center"}}>You have Orders:</p>
-        {orders}
+        {this.orders}
       </Fragment>
     )
   }

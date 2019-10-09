@@ -1,16 +1,17 @@
 import React from 'react'
+import style from './Order.module.css'
 
 const Order = props => {
+
   return (
-    <div>
-    <p>
-      {props.ingredient}:{props.ingQuantity}
-    </p>
-
-    </div>
- 
-  )
+    <li className={style.Order}>
+      {props.ingredientsSummary}
+      <span>---</span> 
+      <p>Total Price: {props.order.totalPrice}</p>
+      <p>Customer Name: {props.order.customer.name}</p>
+    </li>
+    )
 }
-
+ 
 
 export default Order

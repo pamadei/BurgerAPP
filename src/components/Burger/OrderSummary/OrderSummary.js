@@ -25,7 +25,7 @@ function OrderSummary({ingredients, totalPrice, cancelOrder, continueOrder }) {
         >Cancel
         </Button>
         <Button
-        clicked={continueOrder}
+        clicked={()=>continueOrder(ingredients, totalPrice.toFixed(2))}
         btnType={'Success'}
         >Continue</Button>
     </div>

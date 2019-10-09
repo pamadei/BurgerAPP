@@ -13,6 +13,9 @@ const NavigationItems = props => {
       <NavigationItem 
       link={'/Checkout'}>Checkout
       </NavigationItem>
+      <NavigationItem 
+      link={'/Orders'}>Orders
+      </NavigationItem>
     </ul>
   )
 }

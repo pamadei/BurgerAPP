@@ -8,7 +8,7 @@ const NavigationItems = props => {
     <ul className={style.List}>
       <NavigationItem 
       link={'/'} 
-      active>Burger Builder
+      >Burger Builder
       </NavigationItem>
       <NavigationItem 
       link={'/Checkout'}>Checkout

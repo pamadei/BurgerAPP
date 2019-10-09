@@ -15,6 +15,8 @@ const INGREDIENTS_COSTS = {
   meat: 1,
   veggie: 1
 }
+
+let _isMounted = false;
 class BurgerBuilder extends Component {
   
   state = {
@@ -28,7 +30,7 @@ class BurgerBuilder extends Component {
     totalPrice: 4,
     purchasable: false,
     purchasing: false,
-    loading: false
+    loading: false,
   }
 
   updatePurchaseState(ingredients) {
@@ -89,12 +91,22 @@ class BurgerBuilder extends Component {
         email: faker.internet.email()
       }
     }
+    if(_isMounted){
     axios.post('/api/orders', newOrder)
-    .then(res => this.setState({loading:false}));
-
-    this.setState({purchasing:false})
-
+    .then(res => this.setState({loading:false, purchasing:false}));
+    }
+    this.props.history.push('/Checkout')
   }
+
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
 
   render() {
 

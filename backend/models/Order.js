@@ -19,6 +19,9 @@ const OrderSchema = new Schema({
   orderNumber: {
     type: String,
     required: true,
+  },
+  customer: {
+    type:Object,
   }
 });
 

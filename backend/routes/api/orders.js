@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const uuid = require('uuid/v4')
 
 // Order Model
 const Order = require('../../models/Order');
@@ -16,7 +15,17 @@ router.get('/', (req, res) => {
     .catch(err =>console.log(err))
 });
 
-// @route Post api/order
+// @route GET api/orders
+// @des GET one specific order
+// @access private
+
+router.get('/:id', (req, res) => {
+  Order.findById(req.params.id)
+    .then(order => res.status(200).json(order))
+    .catch(err =>console.log(err))
+});
+
+// @route Post api/orders/:id
 // @des Post a new order
 // @access private
 
@@ -24,7 +33,8 @@ router.post('/', (req, res) => {
   const newOrder = new Order({
     ingredients: req.body.ingredients,
     totalPrice: req.body.totalPrice,
-    orderNumber: uuid()
+    orderNumber: Math.floor(Math.random()*10000),
+    customer: req.body.customer
   });
   newOrder.save()
     .then(order => res.status(200).json(order))
@@ -32,7 +42,7 @@ router.post('/', (req, res) => {
 
 });
 
-// @route Delete api/order
+// @route Delete api/orders/:id
 // @des Delete a new order
 // @access public
 

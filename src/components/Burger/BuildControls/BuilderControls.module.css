@@ -16,11 +16,12 @@
   background-color: #dad735;
   outline: none;
   cursor: pointer;
+  width: 50%;
   border: 1px solid #966909;
   color: #966909;
   font-family: inherit;
   font-size: 1,2rem;
-  margin-top: 1rem;
+  margin: 1rem auto;
   padding: 15px 30px;
   box-shadow: 2px 2px 2px #966909
 }

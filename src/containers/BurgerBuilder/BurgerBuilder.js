@@ -4,9 +4,6 @@ import BuilderControls from '../../components/Burger/BuildControls/BuilderCotrol
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
-import faker from 'faker';
-
-import axios from '../../axios-orders'
 
 const INGREDIENTS_COSTS = {
   salad: 0.1,
@@ -82,20 +79,33 @@ class BurgerBuilder extends Component {
   }
 
   purchaseHandlerContinue = () => {
-    this.setState({loading:true})
-    const newOrder = {
-      ingredients: this.state.ingredients,
-      totalPrice: this.state.totalPrice.toFixed(),
-      customer: {
-        name: faker.name.findName(),
-        email: faker.internet.email()
-      }
+    // this.setState({loading:true})
+    // const newOrder = {
+    //   ingredients: this.state.ingredients,
+    //   totalPrice: this.state.totalPrice.toFixed(),
+    //   customer: {
+    //     name: faker.name.findName(),
+    //     email: faker.internet.email()
+    //   }
+    // }
+    // if(_isMounted){
+    // axios.post('/api/orders', newOrder)
+    // .then(res => this.setState({loading:false, purchasing:false}));
+    // }
+
+    const queryIngredients = []
+    for(let i in this.state.ingredients){
+      queryIngredients.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
     }
-    if(_isMounted){
-    axios.post('/api/orders', newOrder)
-    .then(res => this.setState({loading:false, purchasing:false}));
-    }
-    this.props.history.push('/Checkout')
+
+    const queryTotalPrice = [encodeURIComponent('totalPrice') + '=' + encodeURIComponent(this.state.totalPrice.toFixed(2))]
+
+    const queryParams = queryIngredients.concat(queryTotalPrice);
+
+    this.props.history.push({
+      pathname: '/Checkout',
+      search: '?' + queryParams.join('&')
+    })
   }
 
 

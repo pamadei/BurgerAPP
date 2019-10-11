@@ -12,8 +12,6 @@ const INGREDIENTS_COSTS = {
   meat: 1,
   veggie: 1
 }
-
-let _isMounted = false;
 class BurgerBuilder extends Component {
   
   state = {
@@ -107,16 +105,6 @@ class BurgerBuilder extends Component {
       search: '?' + queryParams.join('&')
     })
   }
-
-
-  componentDidMount() {
-    this._isMounted = true;
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
 
   render() {
 

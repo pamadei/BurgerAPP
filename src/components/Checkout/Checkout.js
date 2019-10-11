@@ -60,9 +60,8 @@ class Checkout extends Component {
     }
 
     axios.post('/api/orders', newOrder)
-    .then(res => console.log('Thank you for your purchase'))
+    .then(res => console.log('Order Completed'))
 
-    // this.props.history.goBack();
     this.setState({showThankYouModal:true})
 
 

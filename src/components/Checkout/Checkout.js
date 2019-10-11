@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import CheckoutSummary from './CheckoutSummary/CheckoutSummary'
 import CheckoutForm from './CheckoutForm/CheckoutForm'
+import Modal from '../UI/Modal/Modal'
+import Button from '../UI/Button/Button'
 import axios from '../../axios-orders'
 
 class Checkout extends Component {
@@ -18,7 +20,8 @@ class Checkout extends Component {
       email:""
     },
     totalPrice: 0,
-    enableForm: false
+    enableForm: false,
+    showThankYouModal: false,
   }
 
   componentDidMount() {
@@ -59,7 +62,8 @@ class Checkout extends Component {
     axios.post('/api/orders', newOrder)
     .then(res => console.log('Thank you for your purchase'))
 
-    this.props.history.goBack();
+    // this.props.history.goBack();
+    this.setState({showThankYouModal:true})
 
 
   }
@@ -72,6 +76,9 @@ class Checkout extends Component {
     this.props.history.goBack();
   }
 
+  acceptThankYouHandler  = () => {
+    this.setState({showThankYouModal:false})
+  }
 
 
   render() {
@@ -92,6 +99,20 @@ class Checkout extends Component {
         submitForm={this.onSubmit}/>
         : null
       }
+      <Modal
+        showModal = {this.state.showThankYouModal}
+        clicked={this.acceptThankYouHandler}
+        >
+        <h3 style={{textAlign:'center'}}>Your Order has been placed. You can now collect your Burger at our shop.</h3>
+        <div style={{textAlign:'center'}}>
+          <Button
+          btnType={'Success'}
+          clicked={this.checkoutCancelHandler}
+        >
+        Accept
+        </Button>
+        </div>
+      </Modal>
       </Fragment>
 
     )

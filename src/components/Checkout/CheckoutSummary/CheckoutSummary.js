@@ -5,9 +5,9 @@ import Button from '../../UI/Button/Button'
 const CheckoutSummary = props => {
   return (
     <div style={{margin:'auto', textAlign:'center', width:'80%'}}>
-      <h2 style={{textAlign:'center'}}>
+      <h3 style={{textAlign:'center'}}>
         Ready to order your burger?
-      </h2>
+      </h3>
       <div>
       <Burger ingredients={props.ingredients} />
       </div>

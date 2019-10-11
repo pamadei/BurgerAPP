@@ -8,7 +8,7 @@ const Order = props => {
       {props.ingredientsSummary}
       <span>---</span> 
       <p>Total Price: {props.order.totalPrice}</p>
-      <p>Customer Name: {props.order.customer.name}</p>
+      <p>Customer Name: {props.order.customer.name} {props.order.customer.lastName}</p>
     </li>
     )
 }

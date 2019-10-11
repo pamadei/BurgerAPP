@@ -20,7 +20,7 @@ class Orders extends Component {
 
 
   render() {
-  this.orders = <div>Loading Orders</div>
+  this.orders = <div style={{textAlign:"center"}}>No Orders at the moment.</div>
     if(this.state.orders.length > 0){
     let ingredientsSummary = this.state.orders
       .map((order,i) => Object.keys(order.ingredients)
@@ -51,7 +51,7 @@ class Orders extends Component {
   }
       return (
       <Fragment>
-        <p style={{textAlign:"center"}}>You have Orders:</p>
+        <p style={{textAlign:"center"}}>Your Orders:</p>
         {this.orders}
       </Fragment>
     )

@@ -17,7 +17,7 @@ class OrderPage extends Component {
   }
 
   render() {
-    this.order = <div>Loading Orders</div>
+    this.order = <div style={{textAlign:"center"}}>No Orders at the moment.</div>
     if(this.state.loadedOrder){
 
     this.ingredients = this.state.loadedOrder.ingredients;

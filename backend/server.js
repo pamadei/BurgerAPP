@@ -5,7 +5,7 @@ const path = require('path')
 
 const orders = require('./routes/api/orders')
 
-// DB config 
+// DB config
 const db = require('./config/keys').mongoURI;
 
 // Connect to Mongo

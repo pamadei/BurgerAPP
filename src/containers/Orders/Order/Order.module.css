@@ -6,8 +6,5 @@
   margin-top: 1rem;
   border: 2px solid brown;
   box-shadow: 2px 2px 2px #966909;
-  width: 100%;
-  max-width: 200px;
-  height: 100%;
-  
+  width: 200px
 }

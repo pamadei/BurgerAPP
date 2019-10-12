@@ -4,6 +4,7 @@ import style from './Orders.module.css'
 import OrderIngredient from './OrderIngredient/OrderIngredient'
 import {Link} from 'react-router-dom'
 import Order from './Order/Order'
+import Spinner from '../../components/UI/Spinner/Spinner'
 
 
 class Orders extends Component {
@@ -20,7 +21,7 @@ class Orders extends Component {
 
 
   render() {
-  this.orders = <div style={{textAlign:"center"}}>No Orders at the moment.</div>
+  this.orders = <Spinner/>
     if(this.state.orders.length > 0){
     let ingredientsSummary = this.state.orders
       .map((order,i) => Object.keys(order.ingredients)
@@ -28,7 +29,7 @@ class Orders extends Component {
       .map((_, i) => 
         <OrderIngredient 
         key={Math.floor(Math.random()*1000)+i}
-        ingredient={igKey}
+        ingredient={igKey.replace(/\b\w/g, l => l.toUpperCase())}
         ingQuantity={order.ingredients[igKey]}
         />)));
 
@@ -36,9 +37,9 @@ class Orders extends Component {
       <ul className={style.Orders}>
         {this.state.orders.map((order,i) => 
           <Link 
+          key={order._id}
           to={this.props.match.url + '/' +  order._id}
           className={style.Link}
-          key={order._id}
           >
           <Order 
           order={order}
@@ -52,7 +53,7 @@ class Orders extends Component {
       return (
       <Fragment>
         <p style={{textAlign:"center"}}>Your Orders:</p>
-        {this.orders}
+        {!this.state.orders ? <div style={{textAlign:"center"}}>No Orders at the moment.</div> : this.orders}
       </Fragment>
     )
   }

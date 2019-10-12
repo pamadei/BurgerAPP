@@ -3,12 +3,13 @@ import axios from '../../axios-orders'
 import OrderIngredient from '../../containers/Orders/OrderIngredient/OrderIngredient'
 import Order from '../../containers/Orders/Order/Order'
 import style from './OrderPage.module.css'
+import Spinner from '../UI/Spinner/Spinner'
 
 
 class OrderPage extends Component {
 
   state = {
-    loadedOrder: null
+    loadedOrder: ''
   }
 
   componentDidMount(){
@@ -17,7 +18,7 @@ class OrderPage extends Component {
   }
 
   render() {
-    this.order = <div style={{textAlign:"center"}}>No Orders at the moment.</div>
+    this.order = <Spinner/>
     if(this.state.loadedOrder){
 
     this.ingredients = this.state.loadedOrder.ingredients;
@@ -41,7 +42,7 @@ class OrderPage extends Component {
     return (
       <div>
         <p style={{textAlign:"center"}}>Your Selected Order:</p>
-        {this.order}
+        {Object.keys(this.state.loadedOrder).length === 0 && this.state.loadedOrder !== '' ? <div style={{textAlign:"center"}}>No Orders at the moment.</div> : this.order}
       </div>
     )
   }

@@ -5,9 +5,9 @@ const Order = props => {
 
   return (
     <li className={style.Order}>
-      {props.ingredientsSummary}
-      <span>---</span> 
-      <p>Total Price: {props.order.totalPrice}</p>
+      Ingredients: {props.ingredientsSummary}
+      <p>Price: £<span style={{fontWeight:'bold'}}>{props.order.totalPrice}</span>
+      </p>
       <p>Customer Name: {props.order.customer.name} {props.order.customer.lastName}</p>
     </li>
     )

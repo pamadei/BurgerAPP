@@ -17,6 +17,14 @@ class OrderPage extends Component {
       .then(res => this.setState({loadedOrder: res.data}))
   }
 
+  removeOrder = () => {
+    
+    axios.delete(`/api/orders/${this.props.match.params.id}`)
+      .then(res => console.log('remove button'))
+    this.props.history.goBack();
+
+  }
+
   render() {
     this.order = <Spinner/>
     if(this.state.loadedOrder){
@@ -43,6 +51,12 @@ class OrderPage extends Component {
       <div>
         <p style={{textAlign:"center"}}>Your Selected Order:</p>
         {Object.keys(this.state.loadedOrder).length === 0 && this.state.loadedOrder !== '' ? <div style={{textAlign:"center"}}>No Orders at the moment.</div> : this.order}
+        <div>
+        <button
+        className={style.Button}
+        onClick={this.removeOrder}
+        >Remove Order</button>
+        </div>
       </div>
     )
   }

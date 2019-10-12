@@ -6,11 +6,11 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
 
 const INGREDIENTS_COSTS = {
-  salad: 0.1,
-  bacon: 0.3,
-  cheese: 0.5,
-  meat: 1,
-  veggie: 1
+  salad: 0.5,
+  bacon: 1,
+  cheese: 1.2,
+  meat: 2,
+  veggie: 2
 }
 class BurgerBuilder extends Component {
   

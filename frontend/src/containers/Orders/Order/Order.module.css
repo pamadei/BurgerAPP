@@ -12,6 +12,7 @@
 
 @media (max-width: 500px){
   .Order{
-    width: 70%
+    width: 72%;
+    font-size:0.9rem;
   }
 }

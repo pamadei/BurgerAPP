@@ -12,7 +12,7 @@ const Burger = props => {
   return (
     <div className={style.Burger}>
       <BurgerIngredient type='bread-top'/>
-      {props.sum !== 0 ? transformedIngredients : <p>Please make your order</p>}
+      {props.sum !== 0 ? transformedIngredients : <p>Start building your Burger</p>}
       <BurgerIngredient type='bread-bottom'/>
     </div>
   )

@@ -22,7 +22,7 @@ class BurgerBuilder extends Component {
       beef: 0,
       veggie: 0
     },
-    totalPrice: 4,
+    totalPrice: 2,
     purchasable: false,
     purchasing: false,
     loading: false,

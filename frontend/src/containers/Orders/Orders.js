@@ -29,7 +29,7 @@ class Orders extends Component {
       .map((_, i) => 
         <OrderIngredient 
         key={Math.floor(Math.random()*1000)+i}
-        ingredient={igKey.replace(/\b\w/g, l => l.toUpperCase())}
+        ingredient={igKey}
         ingQuantity={order.ingredients[igKey]}
         />)));
 

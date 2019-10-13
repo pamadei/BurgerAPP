@@ -8,10 +8,10 @@ import axios from '../../axios-orders'
 class Checkout extends Component {
   state = {
     ingredients: {
-      salad: 0,
+      lettuce: 0,
       bacon: 0,
       cheese: 0,
-      meat: 0,
+      beef: 0,
       veggie: 0
       },
     customer: {

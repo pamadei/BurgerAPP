@@ -6,20 +6,20 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
 
 const INGREDIENTS_COSTS = {
-  salad: 0.50,
+  lettuce: 0.50,
   bacon: 1.2,
   cheese: 0.9,
-  meat: 1.5,
+  beef: 1.5,
   veggie: 1.5
 }
 class BurgerBuilder extends Component {
   
   state = {
     ingredients: {
-      salad: 0,
+      lettuce: 0,
       bacon: 0,
       cheese: 0,
-      meat: 0,
+      beef: 0,
       veggie: 0
     },
     totalPrice: 4,
@@ -107,9 +107,6 @@ class BurgerBuilder extends Component {
   }
 
   render() {
-
-    console.log(this.state.totalPrice)
-
     let sumIg = Object.values(this.state.ingredients).reduce((a,b) => a + b, 0)
 
     const disableInfo = {...this.state.ingredients}

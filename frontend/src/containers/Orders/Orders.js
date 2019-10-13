@@ -11,7 +11,6 @@ class Orders extends Component {
 
   state = {
     orders : [],
-    loadedOrder: false
   }
 
   componentDidMount() {

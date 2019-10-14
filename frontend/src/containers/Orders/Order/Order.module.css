@@ -17,3 +17,19 @@
     font-size:0.9rem;
   }
 }
+
+.Order:hover{
+  animation: enable 0.3s linear;
+}
+
+@keyframes enable{
+  0% {
+    transform: scale(1)
+  }
+  60% {
+    transform: scale(1.02)
+  }
+  100% {
+    transform: scale(1)
+  }
+}

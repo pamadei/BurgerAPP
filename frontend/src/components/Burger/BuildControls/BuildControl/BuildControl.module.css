@@ -5,6 +5,7 @@
 
 .Title{
   font-size: 1.2rem;
+  text-transform: capitalize;
   margin: auto 0;
   width: calc(100% / 5);
 }

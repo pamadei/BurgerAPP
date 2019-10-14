@@ -76,6 +76,7 @@ class OrderPage extends Component {
     return (
       <div>
         <p style={{textAlign:"center"}}>Your Selected Order:</p>
+        <div style={{margin:'2rem'}}>
         {Object.keys(this.state.loadedOrder).length === 0 && this.state.loadedOrder !== '' ? <div style={{textAlign:"center"}}>No Orders at the moment.</div> : this.order}
         <button
         className={style.Button}
@@ -93,6 +94,7 @@ class OrderPage extends Component {
           >Remove this Order</button>
         </div>
        </Modal>
+       </div>
       </div>
     )
   }

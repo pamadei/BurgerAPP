@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
   const newOrder = new Order({
     ingredients: req.body.ingredients,
     totalPrice: req.body.totalPrice,
-    orderNumber: Math.floor(Math.random()*10000),
+    orderNumber: Math.floor(Math.random()*1000000),
     customer: req.body.customer
   });
   newOrder.save()

@@ -1,20 +1,25 @@
 
 .Order{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* background-color: #daa045; */
   font-size: 1rem;
   padding: 1rem 2rem;
   margin: 0.5rem 0;
+  /* border: 1.2px solid #daa045; */
   border: 1.2px solid #f1f1f1;
   border-radius: 5px;
+  /* box-shadow: 2px 2px 2px #9e7533; */
   box-shadow: 2px 2px 2px #a2a2a2;
-  width: 90%;
+  width: 100%;
+
 
 }
 
 @media (max-width: 500px){
   .Order{
-    width: 72%;
+    width: 80%;
     font-size:0.9rem;
+    margin: 0.5rem auto;
   }
 }
 
